@@ -1,0 +1,48 @@
+﻿@page "/Pedidos"
+
+<h3>Lista de Pedidos</h3>
+
+<div class"form-group row">
+    <div class="col-sm-2">
+        <a href="/Pedidos/Nuevo" class="btn btn-primary">Nuevo Pedido</a>
+    </div>
+</div>
+
+@if (pedidoLista == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th>Total</th>
+                <th>IdProducto</th>
+                <th>Descripcion Producto</th>
+                 <th>Cantidad</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pedido in pedidoLista)
+            {
+                <tr>
+                    <td>@pedido.Codigo</td>
+                    <td>@pedido.Cliente</td>
+                    <td>@pedido.Total</td>
+                    <td>@pedido.IdProducto</td> 
+                    <td>@pedido.Descripcion</td> 
+                    <td>@pedido.Cantidad</td> 
+                    <td>
+                        <a class="btn btn-success" href="@($"/Pedidos/Editar/{pedido.Codigo}")">Editar</a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
